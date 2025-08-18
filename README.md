@@ -20,7 +20,7 @@ I was responsible for implementing the **Exhaustive Search baseline hardware** a
 
 ### Full Exhaustive Search Detector
 <p align="center">
-<img src="img/hd_arch.png" width="600">
+<img src="img/hd_arch.png" width="1000">
 </p>
 
 - **Prep Unit**: CORDIC-based preprocessing (channel rotation & normalization).  
@@ -51,7 +51,7 @@ I was responsible for implementing the **Exhaustive Search baseline hardware** a
 
 ### Verification Flow
 <p align="center">
-<img src="img/fpga_verification.png" width="550">
+<img src="img/fpga_verification.png" width="1000">
 <p>
 
 - **Platform**: Xilinx Virtex-7 VC707  
