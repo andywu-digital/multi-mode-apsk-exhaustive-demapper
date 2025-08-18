@@ -15,12 +15,12 @@ module CHIP(
     input wire signed [18:0] i_N0_2,
 
     //output
-    output reg signed [18:0]    o_LLR_0,
-    output reg signed [18:0]    o_LLR_1,
-    output reg signed [18:0]    o_LLR_2,
-    output reg signed [18:0]    o_LLR_3,
-    output reg signed [18:0]    o_LLR_4,
-    output reg signed [18:0]    o_LLR_5,
+    output wire signed [18:0]    o_LLR_0,
+    output wire signed [18:0]    o_LLR_1,
+    output wire signed [18:0]    o_LLR_2,
+    output wire signed [18:0]    o_LLR_3,
+    output wire signed [18:0]    o_LLR_4,
+    output wire signed [18:0]    o_LLR_5,
 
     output wire valid
 
@@ -168,9 +168,7 @@ MMCU mm1(
 	metric[30], metric[31], metric[32], metric[33], metric[34], metric[35], metric[36], metric[37], metric[38], metric[39], 
 	metric[40], metric[41], metric[42], metric[43], metric[44], metric[45], metric[46], metric[47], metric[48], metric[49], 
 	metric[50], metric[51], metric[52], metric[53], metric[54], metric[55], metric[56], metric[57], metric[58], metric[59], 
-	metric[60], metric[61], metric[62], metric[63],
-
-	en1, en2, en3, en4, en5
+	metric[60], metric[61], metric[62], metric[63]
 
 );
 
@@ -197,12 +195,12 @@ CU cu1(
 // LLR                                                                                   //
 //=======================================================================================//
 LCU l1(
+    clk, rst_n,
+    Mode,
 	w_metric_0_0, w_metric_1_0, w_metric_2_0, w_metric_3_0, w_metric_4_0, w_metric_5_0,
 	w_metric_0_1, w_metric_1_1, w_metric_2_1, w_metric_3_1, w_metric_4_1, w_metric_5_1,
 	i_N0_2,
 	o_LLR_0, o_LLR_1, o_LLR_2, o_LLR_3, o_LLR_4, o_LLR_5
 );
-
-
 
 endmodule

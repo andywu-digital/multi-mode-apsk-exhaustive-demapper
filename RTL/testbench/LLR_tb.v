@@ -78,24 +78,24 @@ initial begin
 
 
     //QPSK
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/4/CPE_input.txt", CPE_IMEM_4);
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/4/LLR_output.txt", LLR_OMEM_4);
+    $readmemb("../../../../txt/4/CPE_input.txt", CPE_IMEM_4);
+    $readmemb("../../../../txt/4/LLR_output.txt", LLR_OMEM_4);
 
     //8PSK
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/8/CPE_input.txt", CPE_IMEM_8);
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/8/LLR_output.txt", LLR_OMEM_8);
+    $readmemb("../../../../txt/8/CPE_input.txt", CPE_IMEM_8);
+    $readmemb("../../../../txt/8/LLR_output.txt", LLR_OMEM_8);
 
     //16-APSK
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/16/CPE_input.txt", CPE_IMEM_16);
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/16/LLR_output.txt", LLR_OMEM_16);
+    $readmemb("../../../../txt/16/CPE_input.txt", CPE_IMEM_16);
+    $readmemb("../../../../txt/16/LLR_output.txt", LLR_OMEM_16);
 
     //32-APSK
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/32/CPE_input.txt", CPE_IMEM_32);
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/32/LLR_output.txt", LLR_OMEM_32);
+    $readmemb("../../../../txt/32/CPE_input.txt", CPE_IMEM_32);
+    $readmemb("../../../../txt/32/LLR_output.txt", LLR_OMEM_32);
 
     //64-APSK
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/64/CPE_input.txt", CPE_IMEM_64);
-    $readmemb("C:/Users/user/Favorites/Desktop/ES/matlab/txt/64/LLR_output.txt", LLR_OMEM_64);
+    $readmemb("../../../../txt/64/CPE_input.txt", CPE_IMEM_64);
+    $readmemb("../../../../txt/64/LLR_output.txt", LLR_OMEM_64);
 
 end
 

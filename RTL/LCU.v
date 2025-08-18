@@ -5,10 +5,12 @@ module LCU#(
 	parameter sym_num = 64,
 	parameter bit_num = 6
 )(
+	input wire                     clk, rst_n,
+	input wire [2:0]               Mode, 
 	input wire [wordlength-1:0]		w_metric_0_0, w_metric_1_0, w_metric_2_0, w_metric_3_0, w_metric_4_0, w_metric_5_0,
 						w_metric_0_1, w_metric_1_1, w_metric_2_1, w_metric_3_1, w_metric_4_1, w_metric_5_1,
-	input wire [wordlength-1:0] 		i_NO_2,
-	input wire [LLR_wordlength-1:0] 	o_LLR_0, o_LLR_1, o_LLR_2, o_LLR_3, o_LLR_4, o_LLR_5
+	input wire [wordlength-1:0] 		i_N0_2,
+	output reg [LLR_wordlength-1:0] 	o_LLR_0, o_LLR_1, o_LLR_2, o_LLR_3, o_LLR_4, o_LLR_5
 );
 
 //===============================//

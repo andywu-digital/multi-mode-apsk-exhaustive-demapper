@@ -8,7 +8,7 @@ module const_table#(
 
 )(
 	input wire [2:0] 		Mode,
-	input wire [wordlength-1:0] 	LUT_real_0 LUT_real_1, LUT_real_2, LUT_real_3, LUT_real_4, LUT_real_5, LUT_real_6, LUT_real_7, LUT_real_8, LUT_real_9, 
+	output wire [wordlength-1:0] 	LUT_real_0, LUT_real_1, LUT_real_2, LUT_real_3, LUT_real_4, LUT_real_5, LUT_real_6, LUT_real_7, LUT_real_8, LUT_real_9, 
 					LUT_real_10, LUT_real_11, LUT_real_12, LUT_real_13, LUT_real_14, LUT_real_15, LUT_real_16, LUT_real_17, LUT_real_18, LUT_real_19, 
 					LUT_real_20, LUT_real_21, LUT_real_22, LUT_real_23, LUT_real_24, LUT_real_25, LUT_real_26, LUT_real_27, LUT_real_28, LUT_real_29, 
 					LUT_real_30, LUT_real_31, LUT_real_32, LUT_real_33, LUT_real_34, LUT_real_35, LUT_real_36, LUT_real_37, LUT_real_38, LUT_real_39, 
@@ -16,7 +16,7 @@ module const_table#(
 					LUT_real_50, LUT_real_51, LUT_real_52, LUT_real_53, LUT_real_54, LUT_real_55, LUT_real_56, LUT_real_57, LUT_real_58, LUT_real_59, 
 					LUT_real_60, LUT_real_61, LUT_real_62, LUT_real_63,
 
-	input wire [wordlength-1:0] 	LUT_imag_0 LUT_imag_1, LUT_imag_2, LUT_imag_3, LUT_imag_4, LUT_imag_5, LUT_imag_6, LUT_imag_7, LUT_imag_8, LUT_imag_9, 
+	output wire [wordlength-1:0] 	LUT_imag_0, LUT_imag_1, LUT_imag_2, LUT_imag_3, LUT_imag_4, LUT_imag_5, LUT_imag_6, LUT_imag_7, LUT_imag_8, LUT_imag_9, 
 					LUT_imag_10, LUT_imag_11, LUT_imag_12, LUT_imag_13, LUT_imag_14, LUT_imag_15, LUT_imag_16, LUT_imag_17, LUT_imag_18, LUT_imag_19, 
 					LUT_imag_20, LUT_imag_21, LUT_imag_22, LUT_imag_23, LUT_imag_24, LUT_imag_25, LUT_imag_26, LUT_imag_27, LUT_imag_28, LUT_imag_29, 
 					LUT_imag_30, LUT_imag_31, LUT_imag_32, LUT_imag_33, LUT_imag_34, LUT_imag_35, LUT_imag_36, LUT_imag_37, LUT_imag_38, LUT_imag_39, 
