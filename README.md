@@ -20,7 +20,7 @@ I was responsible for implementing the **Exhaustive Search baseline hardware** a
 
 ### Full Exhaustive Search Detector
 <p align="center">
-<img src="img/hd_arch.png" width="1000">
+<img src="img/hd_arch.png" width="700">
 </p>
 
 - **Prep Unit**: CORDIC-based preprocessing (channel rotation & normalization).  
