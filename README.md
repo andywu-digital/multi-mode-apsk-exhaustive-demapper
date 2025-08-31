@@ -1,93 +1,77 @@
 # Multi-Mode Exhaustive Search APSK Soft-Output Detector (Baseline Design)
 
-This project is part of the **25th Macronix Golden Silicon Award**, focusing on the design of a **multi-mode APSK demapper** for satellite communication (DVB-S2/S2X).  
-I was responsible for implementing the **Exhaustive Search baseline hardware** and conducting FPGA verification.
+- This project is part of the **25th Macronix Golden Silicon Award**, focusing on the design of a **multi-mode APSK demapper** for satellite communication (DVB-S2/S2X).  
+- I was responsible for implementing baseline APSK demapper supporting QPSK–64APSK and conducting FPGA flow for functional verification.
 
----
+### Key optimizations
+📌 `Data gating` &nbsp;: &nbsp; Implemented data gating to reduce switching activity → **~47.5% power↓** 🚀 <br>
+📌 `Hardware reused` &nbsp;: &nbsp; Computation sharing across multiple modes → **~24% area↓** 🚀 <br>
 
-## 📌 Overview
-- **Algorithm**: Exhaustive Search (max-log-MAP approximation)
-- **Supported Modulations**: **QPSK, 8-PSK, 16-APSK, 32-APSK, 64-APSK**
-- **Multi-Mode Design**: Single unified RTL architecture supports all modulation modes by reusing datapath resources.
-- **Technology**: TSMC 40nm CMOS
-- **Clock Frequency**: 400 MHz
-- **Word Length**: 18-bit fixed-point
-- **Target Application**: DVB-S2/S2X receivers with Adaptive Coding and Modulation (ACM)
+## ⏩ 1) Overview
+- **Algorithm** &nbsp;: &nbsp; Exhaustive Search (max-log-MAP approximation)
+- **Supported Modulations** &nbsp;: &nbsp; **QPSK, 8-PSK, 16-APSK, 32-APSK, 64-APSK**
+- **Target Application** &nbsp;: &nbsp; DVB-S2/S2X receivers with Adaptive Coding and Modulation (ACM)
 
----
+## ⏩ 2) Hardware Architecture
 
-## 🔧 Hardware Architecture
 
-### Full Exhaustive Search Detector
 <p align="center">
-<img src="img/hd_arch.png" width="700">
+<img src="img/hd_arch.png" width="500">
 </p>
 
-- **Prep Unit**: CORDIC-based preprocessing (channel rotation & normalization).  
-- **Constellation Table**: Provides all constellation points for **all 5 modulation modes**.  
-- **Multi-MCU (Metric Computation Units)**: Computes Euclidean distance for every constellation point.  
-- **Comparison Unit (CU)**: Finds the minimum distances for each bit group (0/1).  
-- **LLR Calculation Unit (LCU)**: Outputs soft LLRs for LDPC decoding.  
+- **Prep Unit** &nbsp;: &nbsp; CORDIC-based preprocessing (channel rotation & normalization).  
+- **Constellation Table** &nbsp;: &nbsp; Provides all constellation points for **all 5 modulation modes**.  
+- **Multi-MCU (Metric Computation Units)** &nbsp;: &nbsp; Computes Euclidean distance for every constellation point.  
+- **Comparison Unit (CU)** &nbsp;: &nbsp; Finds the minimum distances for each bit group (0/1).  
+- **LLR Calculation Unit (LCU)** &nbsp;: &nbsp; Outputs soft LLRs for LDPC decoding.  
 
-➡️ **All modulation modes (QPSK to 64-APSK) share the same datapath**, ensuring configurability and scalability.
 
+## ⏩ 3) Implementation Flow (ASIC)
+🛠 **Algorithm Simulation** &nbsp;→&nbsp; MATLAB (BER, fixed-point wordlength)  
+🛠 **RTL Design & Verification** &nbsp;→&nbsp; Verilog + VCS  
+🛠 **Synthesis @ 40 nm** &nbsp;→&nbsp; Synopsys Design Compiler  
+🛠 **Pre-Layout Verification** &nbsp;→&nbsp; VCS (timing & power check)  
+
+
+## ⏩ 4) Results Summary
+
+| Metric                           | Result / Notes                                     |
+|----------------------------------|----------------------------------------------------|
+| Clock Frequency                  | 400 MHz                                            |
+| Latency                          | 20 clock cycles                                    |
+| Throughput                       | 0.8–2.4 Gbps                                       |
+| Area                             | 481 kGE                                            |
+| Power                            | 37.11 mW                                           |
 
 ---
 
-## 📊 ASIC Results (Exhaustive vs. Iterative)
-| Metric                  | Exhaustive Search | Iterative Design |
-|--------------------------|------------------|-----------------|
-| Equivalent Gates (kGE)  | 481.00           | 277.69          |
-| Frequency (MHz)         | 400              | 400             |
-| Latency (ns)            | 20               | 52.5            |
-| Power (mW, 64-APSK)     | 86.71            | 65.05           |
-| Throughput (Gbps)       | 0.8–2.4          | 0.8–2.4         |
+## ⏩ 5) Repository Structure 
 
-👉 Exhaustive search consumes **~73% more area** and **~25% more power**, but serves as the **multi-mode golden reference baseline**:contentReference[oaicite:2]{index=2}.
+```
+├─ alg/                  # Matlab floating-point & fixed-point simulation & pattern generation
+├─ rtl/                  # Verilog design source & testbench
+├─ syn/                  # Synthesis constraints (.sdc) & reports
+└─ img/                  # Block diagrams, timing, waveforms
+```
 
----
-
-## 🖥️ FPGA Verification
-
-### Verification Flow
-<p align="center">
-<img src="img/fpga_verification.png" width="1000">
+## ⏩ 6) Verification Flow
+<p>
+<img src="img/fpga_verification.png" width="700">
 <p>
 
-- **Platform**: Xilinx Virtex-7 VC707  
-- **Environment**: Xilinx Vivado @ 50 MHz  
-- **Golden Model**: MATLAB fixed-point simulation  
-- **Verification Method**:  
+- **Platform** &nbsp;→&nbsp; Xilinx Virtex-7 VC707  
+- **Environment** &nbsp;→&nbsp; Xilinx Vivado @ 50 MHz  
+- **Golden Model** &nbsp;→&nbsp; MATLAB fixed-point simulation  
+- **Verification Method**  
   - Input/output vectors generated from Golden Model  
   - DUT outputs observed with **Integrated Logic Analyzer (ILA)**  
   - Verified **all 5 modulation modes** with one full packet each (10,800–32,400 symbols).  
 
-### FPGA Resource Usage
-| Metric   | Exhaustive Search | Iterative Design |
-|----------|------------------|-----------------|
-| LUT      | 13,657           | 11,367          |
-| FF       | 1,770            | 5,540           |
-| DSP      | 265              | 121             |
-| Power    | 0.424 W          | 0.327 W         |
+<p>
+<img src="img/ILA_waveform.png" width="700">
+<p>
 
 ➡️ Verification confirmed **bit-accurate outputs across all multi-mode cases (QPSK → 64-APSK)**
 
----
 
-## 🎯 Key Contributions
-- Designed and implemented **multi-mode Exhaustive Search APSK demapper** in RTL.  
-- Built **Multi-MCU datapath** to compute all constellation distances in parallel.  
-- Applied **low-power design (data gating)** to reduce dynamic power.  
-- Conducted **FPGA verification** with ILA and Golden Model comparison.  
-- Established the **baseline for benchmarking** optimized iterative architecture.  
-
----
-
-## 📽️ Demo
-- FPGA verification video available (VC707, ILA waveform).  
-- Each modulation mode tested with one full packet (10,800–32,400 symbols).
-
----
-
-## 📚 References
 

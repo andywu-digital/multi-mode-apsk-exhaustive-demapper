@@ -7,6 +7,7 @@ module MMCU#(
 	parameter bit_num = 6
 )(
 	input wire 			clk, rst_n,
+	input wire [2:0] 		Mode,
 	input wire [wordlength-1:0] 	w_u_re, w_u_im,
 	input wire [wordlength-1:0] 	w_h,
 	input wire [wordlength-1:0] 	LUT_real_0, LUT_real_1, LUT_real_2, LUT_real_3, LUT_real_4, LUT_real_5, LUT_real_6, LUT_real_7, LUT_real_8, LUT_real_9, 
@@ -35,82 +36,91 @@ module MMCU#(
 
 );
 
-MCU M0(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_0), .s_im_i(LUT_imag_0), .metric_o(metric_0));
-MCU M1(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_1), .s_im_i(LUT_imag_1), .metric_o(metric_1));
-MCU M2(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_2), .s_im_i(LUT_imag_2), .metric_o(metric_2));
-MCU M3(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_3), .s_im_i(LUT_imag_3), .metric_o(metric_3));
-MCU M4(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_4), .s_im_i(LUT_imag_4), .metric_o(metric_4));
-MCU M5(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_5), .s_im_i(LUT_imag_5), .metric_o(metric_5));
-MCU M6(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_6), .s_im_i(LUT_imag_6), .metric_o(metric_6));
-MCU M7(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_7), .s_im_i(LUT_imag_7), .metric_o(metric_7));
-MCU M8(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_8), .s_im_i(LUT_imag_8), .metric_o(metric_8));
-MCU M9(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_9), .s_im_i(LUT_imag_9), .metric_o(metric_9));
-MCU M10(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_10), .s_im_i(LUT_imag_10), .metric_o(metric_10));
-MCU M11(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_11), .s_im_i(LUT_imag_11), .metric_o(metric_11));
-MCU M12(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_12), .s_im_i(LUT_imag_12), .metric_o(metric_12));
-MCU M13(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_13), .s_im_i(LUT_imag_13), .metric_o(metric_13));
-MCU M14(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_14), .s_im_i(LUT_imag_14), .metric_o(metric_14));
-MCU M15(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_15), .s_im_i(LUT_imag_15), .metric_o(metric_15));
-MCU M16(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_16), .s_im_i(LUT_imag_16), .metric_o(metric_16));
-MCU M17(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_17), .s_im_i(LUT_imag_17), .metric_o(metric_17));
-MCU M18(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_18), .s_im_i(LUT_imag_18), .metric_o(metric_18));
-MCU M19(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_19), .s_im_i(LUT_imag_19), .metric_o(metric_19));
-MCU M20(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_20), .s_im_i(LUT_imag_20), .metric_o(metric_20));
-MCU M21(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_21), .s_im_i(LUT_imag_21), .metric_o(metric_21));
-MCU M22(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_22), .s_im_i(LUT_imag_22), .metric_o(metric_22));
-MCU M23(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_23), .s_im_i(LUT_imag_23), .metric_o(metric_23));
-MCU M24(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_24), .s_im_i(LUT_imag_24), .metric_o(metric_24));
-MCU M25(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_25), .s_im_i(LUT_imag_25), .metric_o(metric_25));
-MCU M26(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_26), .s_im_i(LUT_imag_26), .metric_o(metric_26));
-MCU M27(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_27), .s_im_i(LUT_imag_27), .metric_o(metric_27));
-MCU M28(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_28), .s_im_i(LUT_imag_28), .metric_o(metric_28));
-MCU M29(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_29), .s_im_i(LUT_imag_29), .metric_o(metric_29));
-MCU M30(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_30), .s_im_i(LUT_imag_30), .metric_o(metric_30));
-MCU M31(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_31), .s_im_i(LUT_imag_31), .metric_o(metric_31));
-MCU M32(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_32), .s_im_i(LUT_imag_32), .metric_o(metric_32));
-MCU M33(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_33), .s_im_i(LUT_imag_33), .metric_o(metric_33));
-MCU M34(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_34), .s_im_i(LUT_imag_34), .metric_o(metric_34));
-MCU M35(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_35), .s_im_i(LUT_imag_35), .metric_o(metric_35));
-MCU M36(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_36), .s_im_i(LUT_imag_36), .metric_o(metric_36));
-MCU M37(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_37), .s_im_i(LUT_imag_37), .metric_o(metric_37));
-MCU M38(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_38), .s_im_i(LUT_imag_38), .metric_o(metric_38));
-MCU M39(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_39), .s_im_i(LUT_imag_39), .metric_o(metric_39));
-MCU M40(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_40), .s_im_i(LUT_imag_40), .metric_o(metric_40));
-MCU M41(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_41), .s_im_i(LUT_imag_41), .metric_o(metric_41));
-MCU M42(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_42), .s_im_i(LUT_imag_42), .metric_o(metric_42));
-MCU M43(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_43), .s_im_i(LUT_imag_43), .metric_o(metric_43));
-MCU M44(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_44), .s_im_i(LUT_imag_44), .metric_o(metric_44));
-MCU M45(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_45), .s_im_i(LUT_imag_45), .metric_o(metric_45));
-MCU M46(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_46), .s_im_i(LUT_imag_46), .metric_o(metric_46));
-MCU M47(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_47), .s_im_i(LUT_imag_47), .metric_o(metric_47));
-MCU M48(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_48), .s_im_i(LUT_imag_48), .metric_o(metric_48));
-MCU M49(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_49), .s_im_i(LUT_imag_49), .metric_o(metric_49));
-MCU M50(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_50), .s_im_i(LUT_imag_50), .metric_o(metric_50));
-MCU M51(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_51), .s_im_i(LUT_imag_51), .metric_o(metric_51));
-MCU M52(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_52), .s_im_i(LUT_imag_52), .metric_o(metric_52));
-MCU M53(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_53), .s_im_i(LUT_imag_53), .metric_o(metric_53));
-MCU M54(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_54), .s_im_i(LUT_imag_54), .metric_o(metric_54));
-MCU M55(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_55), .s_im_i(LUT_imag_55), .metric_o(metric_55));
-MCU M56(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_56), .s_im_i(LUT_imag_56), .metric_o(metric_56));
-MCU M57(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_57), .s_im_i(LUT_imag_57), .metric_o(metric_57));
-MCU M58(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_58), .s_im_i(LUT_imag_58), .metric_o(metric_58));
-MCU M59(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_59), .s_im_i(LUT_imag_59), .metric_o(metric_59));
-MCU M60(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_60), .s_im_i(LUT_imag_60), .metric_o(metric_60));
-MCU M61(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_61), .s_im_i(LUT_imag_61), .metric_o(metric_61));
-MCU M62(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_62), .s_im_i(LUT_imag_62), .metric_o(metric_62));
-MCU M63(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_63), .s_im_i(LUT_imag_63), .metric_o(metric_63));
+wire en1, en2, en3, en4, en5;
+
+assign en5 = 'd1;
+assign en4 = (Mode >= 3'd2) ? 'd1 : 'd0;
+assign en3 = (Mode >= 3'd3) ? 'd1 : 'd0;
+assign en2 = (Mode >= 3'd4) ? 'd1 : 'd0;
+assign en1 = (Mode >= 3'd5) ? 'd1 : 'd0;
+
+MCU M0(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_0), .s_im_i(LUT_imag_0), .metric_o(metric_0), .en(en5));
+MCU M1(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_1), .s_im_i(LUT_imag_1), .metric_o(metric_1), .en(en5));
+MCU M2(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_2), .s_im_i(LUT_imag_2), .metric_o(metric_2), .en(en5));
+MCU M3(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_3), .s_im_i(LUT_imag_3), .metric_o(metric_3), .en(en5));
+MCU M4(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_4), .s_im_i(LUT_imag_4), .metric_o(metric_4), .en(en4));
+MCU M5(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_5), .s_im_i(LUT_imag_5), .metric_o(metric_5), .en(en4));
+MCU M6(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_6), .s_im_i(LUT_imag_6), .metric_o(metric_6), .en(en4));
+MCU M7(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_7), .s_im_i(LUT_imag_7), .metric_o(metric_7), .en(en4));
+MCU M8(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_8), .s_im_i(LUT_imag_8), .metric_o(metric_8), .en(en3));
+MCU M9(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_9), .s_im_i(LUT_imag_9), .metric_o(metric_9), .en(en3));
+MCU M10(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_10), .s_im_i(LUT_imag_10), .metric_o(metric_10), .en(en3));
+MCU M11(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_11), .s_im_i(LUT_imag_11), .metric_o(metric_11), .en(en3));
+MCU M12(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_12), .s_im_i(LUT_imag_12), .metric_o(metric_12), .en(en3));
+MCU M13(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_13), .s_im_i(LUT_imag_13), .metric_o(metric_13), .en(en3));
+MCU M14(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_14), .s_im_i(LUT_imag_14), .metric_o(metric_14), .en(en3));
+MCU M15(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_15), .s_im_i(LUT_imag_15), .metric_o(metric_15), .en(en3));
+MCU M16(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_16), .s_im_i(LUT_imag_16), .metric_o(metric_16), .en(en2));
+MCU M17(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_17), .s_im_i(LUT_imag_17), .metric_o(metric_17), .en(en2));
+MCU M18(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_18), .s_im_i(LUT_imag_18), .metric_o(metric_18), .en(en2));
+MCU M19(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_19), .s_im_i(LUT_imag_19), .metric_o(metric_19), .en(en2));
+MCU M20(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_20), .s_im_i(LUT_imag_20), .metric_o(metric_20), .en(en2));
+MCU M21(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_21), .s_im_i(LUT_imag_21), .metric_o(metric_21), .en(en2));
+MCU M22(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_22), .s_im_i(LUT_imag_22), .metric_o(metric_22), .en(en2));
+MCU M23(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_23), .s_im_i(LUT_imag_23), .metric_o(metric_23), .en(en2));
+MCU M24(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_24), .s_im_i(LUT_imag_24), .metric_o(metric_24), .en(en2));
+MCU M25(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_25), .s_im_i(LUT_imag_25), .metric_o(metric_25), .en(en2));
+MCU M26(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_26), .s_im_i(LUT_imag_26), .metric_o(metric_26), .en(en2));
+MCU M27(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_27), .s_im_i(LUT_imag_27), .metric_o(metric_27), .en(en2));
+MCU M28(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_28), .s_im_i(LUT_imag_28), .metric_o(metric_28), .en(en2));
+MCU M29(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_29), .s_im_i(LUT_imag_29), .metric_o(metric_29), .en(en2));
+MCU M30(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_30), .s_im_i(LUT_imag_30), .metric_o(metric_30), .en(en2));
+MCU M31(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_31), .s_im_i(LUT_imag_31), .metric_o(metric_31), .en(en2));
+MCU M32(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_32), .s_im_i(LUT_imag_32), .metric_o(metric_32), .en(en1));
+MCU M33(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_33), .s_im_i(LUT_imag_33), .metric_o(metric_33), .en(en1));
+MCU M34(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_34), .s_im_i(LUT_imag_34), .metric_o(metric_34), .en(en1));
+MCU M35(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_35), .s_im_i(LUT_imag_35), .metric_o(metric_35), .en(en1));
+MCU M36(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_36), .s_im_i(LUT_imag_36), .metric_o(metric_36), .en(en1));
+MCU M37(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_37), .s_im_i(LUT_imag_37), .metric_o(metric_37), .en(en1));
+MCU M38(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_38), .s_im_i(LUT_imag_38), .metric_o(metric_38), .en(en1));
+MCU M39(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_39), .s_im_i(LUT_imag_39), .metric_o(metric_39), .en(en1));
+MCU M40(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_40), .s_im_i(LUT_imag_40), .metric_o(metric_40), .en(en1));
+MCU M41(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_41), .s_im_i(LUT_imag_41), .metric_o(metric_41), .en(en1));
+MCU M42(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_42), .s_im_i(LUT_imag_42), .metric_o(metric_42), .en(en1));
+MCU M43(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_43), .s_im_i(LUT_imag_43), .metric_o(metric_43), .en(en1));
+MCU M44(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_44), .s_im_i(LUT_imag_44), .metric_o(metric_44), .en(en1));
+MCU M45(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_45), .s_im_i(LUT_imag_45), .metric_o(metric_45), .en(en1));
+MCU M46(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_46), .s_im_i(LUT_imag_46), .metric_o(metric_46), .en(en1));
+MCU M47(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_47), .s_im_i(LUT_imag_47), .metric_o(metric_47), .en(en1));
+MCU M48(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_48), .s_im_i(LUT_imag_48), .metric_o(metric_48), .en(en1));
+MCU M49(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_49), .s_im_i(LUT_imag_49), .metric_o(metric_49), .en(en1));
+MCU M50(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_50), .s_im_i(LUT_imag_50), .metric_o(metric_50), .en(en1));
+MCU M51(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_51), .s_im_i(LUT_imag_51), .metric_o(metric_51), .en(en1));
+MCU M52(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_52), .s_im_i(LUT_imag_52), .metric_o(metric_52), .en(en1));
+MCU M53(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_53), .s_im_i(LUT_imag_53), .metric_o(metric_53), .en(en1));
+MCU M54(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_54), .s_im_i(LUT_imag_54), .metric_o(metric_54), .en(en1));
+MCU M55(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_55), .s_im_i(LUT_imag_55), .metric_o(metric_55), .en(en1));
+MCU M56(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_56), .s_im_i(LUT_imag_56), .metric_o(metric_56), .en(en1));
+MCU M57(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_57), .s_im_i(LUT_imag_57), .metric_o(metric_57), .en(en1));
+MCU M58(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_58), .s_im_i(LUT_imag_58), .metric_o(metric_58), .en(en1));
+MCU M59(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_59), .s_im_i(LUT_imag_59), .metric_o(metric_59), .en(en1));
+MCU M60(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_60), .s_im_i(LUT_imag_60), .metric_o(metric_60), .en(en1));
+MCU M61(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_61), .s_im_i(LUT_imag_61), .metric_o(metric_61), .en(en1));
+MCU M62(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_62), .s_im_i(LUT_imag_62), .metric_o(metric_62), .en(en1));
+MCU M63(.rst_n(rst_n), .clk(clk), .u_re_i(w_u_re), .u_im_i(w_u_im), .h_i(w_h), .s_re_i(LUT_real_63), .s_im_i(LUT_imag_63), .metric_o(metric_63), .en(en1));
 
 endmodule
 
 `define WORDLENGTH 18 //Q8.10
 `define FRACTION 10
 
-module MCU(clk, rst_n, u_re_i, u_im_i, h_i, s_re_i, s_im_i, metric_o);
+module MCU(clk, rst_n, u_re_i, u_im_i, h_i, s_re_i, s_im_i, metric_o, en);
 
 // =============== //
 // IO
 // =============== //
 input clk;
+input en;
 input rst_n;
 input   signed  [`WORDLENGTH-1:0]   u_re_i, u_im_i, h_i, s_re_i, s_im_i;
 output  reg signed  [`WORDLENGTH-1:0]   metric_o;
@@ -137,9 +147,13 @@ assign hs_im = (hs_im_t[`FRACTION +`WORDLENGTH - 1:`FRACTION]);
 // ================== //
 // ----- Signal ----- //
 wire    signed  [`WORDLENGTH-1:0]   m_sub_re, m_sub_im;
+wire 	signed  [`WORDLENGTH-1:0]   u_re, u_im;
 // ------------------ //
-assign m_sub_re = u_re_i - hs_re;
-assign m_sub_im = u_im_i - hs_im;
+assign u_re = (en) ? u_re_i : 'd0;
+assign u_im = (en) ? u_im_i : 'd0;
+
+assign m_sub_re = u_re - hs_re;
+assign m_sub_im = u_im - hs_im;
 
 // ================== //
 // square
@@ -169,8 +183,10 @@ always @ (posedge clk) begin
 
     if(!rst_n)
         metric_o <= 18'b0;
-    else
+    else if(en)
         metric_o <= w_metric_o;
+    else
+        metric_o <= 18'b011111111111111111;
 end
 
 endmodule

@@ -144,6 +144,7 @@ const_table cs1(
 MMCU mm1(
 
 	clk, rst_n,
+	Mode,
 	w_u_re, w_u_im,
 	w_h,
 	LUT_real[0], LUT_real[1], LUT_real[2], LUT_real[3], LUT_real[4], LUT_real[5], LUT_real[6], LUT_real[7], LUT_real[8], LUT_real[9], 
